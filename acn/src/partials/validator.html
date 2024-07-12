@@ -1,0 +1,47 @@
+<div class="window" style="margin: 32px; width: 75ch">
+  <div class="title-bar" style="padding: 1rem 0.5rem">
+    <div class="title-bar-text">Australian Company Number (ACN) Validator</div>
+  </div>
+  <div class="window-body" style="padding: 0.5rem 1rem">
+    <fieldset>
+      <legend>Input Number</legend>
+      <input
+        type="text"
+        style="width: 100%"
+        ng-trim="true"
+        ng-model="inputValue"
+        ng-change="valueChange()"
+      />
+    </fieldset>
+    <fieldset>
+      <legend>Result Validation</legend>
+      <div
+        style="
+          display: flex;
+          gap: 1rem;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+        "
+      >
+        <div style="display: flex; gap: 5px">
+          <span
+            ng-repeat="num in inputArray track by $index"
+            ng-style="{ 
+                'border-width': '1px',
+                'border-style': 'solid',
+                'border-color': num !== null ? 'blue' : '#7f9db9',
+                'color': num !== null ? 'blue' : '#7f9db9',
+                'background-color': num !== null ? 'lightblue' : 'transparent',
+                'padding': '0.5rem', 
+                'margin-left': $index % 3 === 0 && $index !== 0 ? '1rem' : '0px'
+            }"
+            >{{ num ? num : 0 }}</span
+          >
+        </div>
+      </div>
+
+      <p ng-style="resultStyle">{{ valid }}</p>
+    </fieldset>
+  </div>
+</div>
